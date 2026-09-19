@@ -1,0 +1,67 @@
+package com.lcy.item;
+
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.level.block.Block;
+
+import java.util.function.Function;
+
+public class ModItems {
+    public static void initialize() {
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS)
+                .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_INGOT));
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.HOTBAR)
+                .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_SWORD));
+    }
+
+    public static Item register(ResourceKey<Item> itemKey, Function<Item.Properties, Item> itemFactory, Item.Properties settings) {
+        // Create the item instance.
+        Item item = itemFactory.apply(settings.setId(itemKey));
+
+        // Register the item.
+        Registry.register(BuiltInRegistries.ITEM, itemKey, item);
+
+        return item;
+    }
+
+    public static final Item OBSIDIAN_INGOT = register(ModItemIds.OBSIDIAN_INGOT, Item::new, new Item.Properties());
+
+    public static final TagKey<Block> INCORRECT_FOR_OBSIDIAN_TOOL = TagKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath("obsidian", "incorrect_for_obsidian_tool")
+    );
+
+    public static final TagKey<Item> REPAIRS_OBSIDIAN_ARMOR = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            Identifier.fromNamespaceAndPath("obsidian", "repairs_obsidian_armor")
+    );
+
+    public static final ToolMaterial OBSIDIAN_MATERIAL = new ToolMaterial(
+            INCORRECT_FOR_OBSIDIAN_TOOL, // 挖掘不产生掉落的方块标签
+            1800,                        // 耐久度
+            7.0F,                        // 挖掘速度
+            3.5F,                        // 额外攻击伤害
+            8,                           // 附魔能力
+            REPAIRS_OBSIDIAN_ARMOR       // 修复物品标签
+    );
+
+    public static final Item OBSIDIAN_SWORD = register(
+            ModItemIds.OBSIDIAN_SWORD,
+            Item::new,
+            new Item.Properties().sword(OBSIDIAN_MATERIAL, 1f, 1f)
+    );
+
+    public static final Item OBSIDIAN_PICKAXE = register(
+            ModItemIds.OBSIDIAN_PICKAXE,
+            Item::new,
+            new Item.Properties().pickaxe(OBSIDIAN_MATERIAL, 1f, 1f)
+    );
+}
