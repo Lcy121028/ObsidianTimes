@@ -1,10 +1,11 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    "minecraft:obsidian"
-  ],
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "minecraft:obsidian",
   "result": {
     "id": "obsidian:obsidian_ingot",
-    "count": 9
-  }
+    "count": 1
+  },
+  "experience": 0.7,
+  "cookingtime": 200
 }

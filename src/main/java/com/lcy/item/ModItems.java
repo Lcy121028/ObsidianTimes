@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 
@@ -18,7 +19,7 @@ public class ModItems {
     public static void initialize() {
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS)
                 .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_INGOT));
-        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.HOTBAR)
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT)
                 .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_SWORD));
     }
 
@@ -45,23 +46,18 @@ public class ModItems {
     );
 
     public static final ToolMaterial OBSIDIAN_MATERIAL = new ToolMaterial(
-            INCORRECT_FOR_OBSIDIAN_TOOL, // 挖掘不产生掉落的方块标签
-            1800,                        // 耐久度
-            7.0F,                        // 挖掘速度
-            3.5F,                        // 额外攻击伤害
-            8,                           // 附魔能力
-            REPAIRS_OBSIDIAN_ARMOR       // 修复物品标签
+            INCORRECT_FOR_OBSIDIAN_TOOL, 1800,7.0F,4.1F,8,REPAIRS_OBSIDIAN_ARMOR
     );
 
     public static final Item OBSIDIAN_SWORD = register(
             ModItemIds.OBSIDIAN_SWORD,
             Item::new,
-            new Item.Properties().sword(OBSIDIAN_MATERIAL, 1f, 1f)
+            new Item.Properties().sword(OBSIDIAN_MATERIAL, 3.0f, -2.4f)
     );
 
     public static final Item OBSIDIAN_PICKAXE = register(
             ModItemIds.OBSIDIAN_PICKAXE,
             Item::new,
-            new Item.Properties().pickaxe(OBSIDIAN_MATERIAL, 1f, 1f)
+            new Item.Properties().pickaxe(OBSIDIAN_MATERIAL, 1.0f, -2.8f)
     );
 }
