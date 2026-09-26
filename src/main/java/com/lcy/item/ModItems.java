@@ -42,7 +42,7 @@ public class ModItems {
 
     public static final TagKey<Item> REPAIRS_OBSIDIAN_ARMOR = TagKey.create(
             BuiltInRegistries.ITEM.key(),
-            Identifier.fromNamespaceAndPath("obsidian", "repairs_obsidian_armor")
+            Identifier.fromNamespaceAndPath("obsidian", "repairs_obsidian_tool")
     );
 
     public static final ToolMaterial OBSIDIAN_MATERIAL = new ToolMaterial(
