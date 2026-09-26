@@ -1,5 +1,6 @@
 {
   "item.obsidian.obsidian_ingot": "Obsidian Ingot",
   "item.obsidian.obsidian_sword": "Obsidian Sword",
-  "item.obsidian.obsidian_pickaxe": "Obsidian Pickaxe"
+  "item.obsidian.obsidian_pickaxe": "Obsidian Pickaxe",
+  "creativeTab.obsidian": "Obsidian Times Tab"
 }

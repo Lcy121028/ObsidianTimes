@@ -21,6 +21,8 @@ public class ModItems {
                 .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_INGOT));
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT)
                 .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_SWORD));
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
+                .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_PICKAXE));
     }
 
     public static Item register(ResourceKey<Item> itemKey, Function<Item.Properties, Item> itemFactory, Item.Properties settings) {
@@ -52,12 +54,16 @@ public class ModItems {
     public static final Item OBSIDIAN_SWORD = register(
             ModItemIds.OBSIDIAN_SWORD,
             Item::new,
-            new Item.Properties().sword(OBSIDIAN_MATERIAL, 3.0f, -2.4f)
+            new Item.Properties()
+                    .sword(OBSIDIAN_MATERIAL, 3.0f, -2.4f)
+                    .durability(1800)
     );
 
     public static final Item OBSIDIAN_PICKAXE = register(
             ModItemIds.OBSIDIAN_PICKAXE,
             Item::new,
-            new Item.Properties().pickaxe(OBSIDIAN_MATERIAL, 1.0f, -2.8f)
+            new Item.Properties()
+                    .pickaxe(OBSIDIAN_MATERIAL, 1.0f, -2.8f)
+                    .durability(1800)
     );
 }
