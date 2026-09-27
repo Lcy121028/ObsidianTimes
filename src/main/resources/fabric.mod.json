@@ -3,13 +3,13 @@
 	"id": "obsidian",
 	"version": "${version}",
 	"name": "Obsidian Times",
-	"description": "We Need More Obsidians!!!",
+	"description": "Expansion for Obsidian in Minecraft.",
 	"authors": [
 		"Lcy"
 	],
 	"contact": {
 		"homepage": "https://github.com/Lcy121028",
-		"sources": "https://github.com/Lcy121028/"
+		"sources": "https://github.com/Lcy121028/ObsidianTimes"
 	},
 	"license": "MIT",
 	"icon": "assets/obsidian/icon.png",

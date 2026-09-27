@@ -14,5 +14,8 @@ public class ModItemIds {
 
     public static final ResourceKey<Item> OBSIDIAN_INGOT = create("obsidian_ingot");
     public static final ResourceKey<Item> OBSIDIAN_SWORD = create("obsidian_sword");
+    public static final ResourceKey<Item> OBSIDIAN_SHOVEL = create("obsidian_shovel");
     public static final ResourceKey<Item> OBSIDIAN_PICKAXE = create("obsidian_pickaxe");
+    public static final ResourceKey<Item> OBSIDIAN_AXE = create("obsidian_axe");
+    public static final ResourceKey<Item> OBSIDIAN_HOE = create("obsidian_hoe");
 }

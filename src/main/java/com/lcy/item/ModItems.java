@@ -7,10 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 
 import java.util.function.Function;
@@ -21,8 +18,14 @@ public class ModItems {
                 .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_INGOT));
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT)
                 .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_SWORD));
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT)
+                .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_AXE));
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
                 .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_PICKAXE));
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
+                .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_SHOVEL));
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
+                .register((creativeTab) -> creativeTab.accept(ModItems.OBSIDIAN_HOE));
     }
 
     public static Item register(ResourceKey<Item> itemKey, Function<Item.Properties, Item> itemFactory, Item.Properties settings) {
@@ -35,28 +38,47 @@ public class ModItems {
         return item;
     }
 
+    // Obsidian Ingot
     public static final Item OBSIDIAN_INGOT = register(ModItemIds.OBSIDIAN_INGOT, Item::new, new Item.Properties());
 
+    // Materials of Obsidian Tools
     public static final TagKey<Block> INCORRECT_FOR_OBSIDIAN_TOOL = TagKey.create(
             Registries.BLOCK,
             Identifier.fromNamespaceAndPath("obsidian", "incorrect_for_obsidian_tool")
     );
-
     public static final TagKey<Item> REPAIRS_OBSIDIAN_ARMOR = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             Identifier.fromNamespaceAndPath("obsidian", "repairs_obsidian_tool")
     );
-
     public static final ToolMaterial OBSIDIAN_MATERIAL = new ToolMaterial(
             INCORRECT_FOR_OBSIDIAN_TOOL, 1800,7.0F,4.1F,8,REPAIRS_OBSIDIAN_ARMOR
     );
 
+    // Obsidian Tools
     public static final Item OBSIDIAN_SWORD = register(
             ModItemIds.OBSIDIAN_SWORD,
             Item::new,
             new Item.Properties()
                     .sword(OBSIDIAN_MATERIAL, 3.0f, -2.4f)
                     .durability(1800)
+    );
+
+    public static final Item OBSIDIAN_SHOVEL = register(
+            ModItemIds.OBSIDIAN_SHOVEL,
+            p -> new ShovelItem(OBSIDIAN_MATERIAL, 1.5f, -3.0f, p),
+            new Item.Properties()
+    );
+
+    public static final Item OBSIDIAN_AXE = register(
+            ModItemIds.OBSIDIAN_AXE,
+            p -> new AxeItem(OBSIDIAN_MATERIAL, 5.0f, -3.0f, p),
+            new Item.Properties()
+    );
+
+    public static final Item OBSIDIAN_HOE = register(
+            ModItemIds.OBSIDIAN_HOE,
+            p -> new HoeItem(OBSIDIAN_MATERIAL, -3.0F, 0.0F, p),
+            new Item.Properties()
     );
 
     public static final Item OBSIDIAN_PICKAXE = register(
@@ -66,4 +88,5 @@ public class ModItems {
                     .pickaxe(OBSIDIAN_MATERIAL, 1.0f, -2.8f)
                     .durability(1800)
     );
+
 }

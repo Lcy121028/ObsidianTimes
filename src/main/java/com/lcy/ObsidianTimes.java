@@ -18,18 +18,20 @@ import net.minecraft.world.item.component.ItemLore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-
 /*
 * Obsidian Times
 * --with Fabric
 *
 * written by Lcy
 *
-* now : version 0.1
+* version 0.5
 *
 * > add obsidian ingot.
 * > add obsidian sword.
+* > add obsidian axe.
+* > add obsidian pickaxe.
+* > add obsidian shovel.
+* > add obsidian hoe.
 * */
 
 public class ObsidianTimes implements ModInitializer {
@@ -50,7 +52,10 @@ public class ObsidianTimes implements ModInitializer {
 				output.accept(ModItems.OBSIDIAN_INGOT);
 
 				output.accept(ModItems.OBSIDIAN_SWORD);
+				output.accept(ModItems.OBSIDIAN_AXE);
 				output.accept(ModItems.OBSIDIAN_PICKAXE);
+				output.accept(ModItems.OBSIDIAN_SHOVEL);
+				output.accept(ModItems.OBSIDIAN_HOE);
 			})
 			.build();
 
